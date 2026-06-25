@@ -70,5 +70,7 @@
 ### Тестирование
 
 ![1](Screenshots/task-1.png)
+
 ![2](Screenshots/task-2.png)
+
 ![3](Screenshots/task-3.png)
