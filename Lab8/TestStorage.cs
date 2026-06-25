@@ -7,7 +7,7 @@ namespace Lab8
         const string FILE = "database.dat";
 
         private readonly Stream _stream;
-        private readonly List<Test> _data = [];
+        private readonly List<Test> _tests = [];
 
         public TestStorage()
         {
@@ -15,7 +15,13 @@ namespace Lab8
             Initialize();
         }
 
-        public List<Test> Tests => _data;
+        public List<Test> Tests
+        {
+            get
+            {
+                return _tests;
+            }
+        }
 
         public void Dispose()
         {
@@ -27,13 +33,13 @@ namespace Lab8
         {
             EnsureValidPosition();
             var writer = new BinaryWriter(_stream);
-            var count = _data.Count;
+            var count = _tests.Count;
 
             writer.Write(count);
 
-            for (int i = 0; i < _data.Count; i++)
+            for (int i = 0; i < _tests.Count; i++)
             {
-                _data[i].Serialize(writer);
+                _tests[i].Serialize(writer);
             }
         }
 
@@ -47,7 +53,7 @@ namespace Lab8
 
                 for (int i = 0; i < count; i++)
                 {
-                    _data.Add(Test.Deserialize(reader));
+                    _tests.Add(Test.Deserialize(reader));
                 }
             }
         }
